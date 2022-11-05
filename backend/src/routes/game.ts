@@ -5,13 +5,13 @@ import { authenticate } from "../plugins/authenticate"
 
 export async function gameRoutes(fastify: FastifyInstance) {
   fastify.get('/pools/:id/games', {
-    onRequest: [authenticate],
+    onRequest: [authenticate]
   }, async (request) => {
-    const getPoolParams = z.object({
-      id: z.string(),
+    const getPoolGames = z.object({
+      id: z.string()
     })
 
-    const { id } = getPoolParams.parse(request.params)
+    const { id } = getPoolGames.parse(request.params)
 
     const games = await prisma.game.findMany({
       orderBy: {
@@ -22,7 +22,7 @@ export async function gameRoutes(fastify: FastifyInstance) {
           where: {
             participant: {
               userId: request.user.sub,
-              poolId: id,
+              poolId: id
             }
           }
         }
@@ -34,7 +34,7 @@ export async function gameRoutes(fastify: FastifyInstance) {
         return {
           ...game,
           guess: game.guesses.length > 0 ? game.guesses[0] : null,
-          guesses: undefined,
+          guesses: undefined
         }
       })
     }
