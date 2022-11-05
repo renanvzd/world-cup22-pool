@@ -7,6 +7,7 @@ import { PlusCircle, SoccerBall } from 'phosphor-react-native';
 
 import { New } from '../screens/New';
 import { Pools } from '../screens/Pools';
+import { Find } from '../screens/Find';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -48,6 +49,12 @@ export function AppRoutes() {
           tabBarIcon: ({ color }) => <SoccerBall color={color} size={size} />,
           tabBarLabel: 'Meus boloes'
         }}
+      />
+
+      <Screen
+        name="pools"
+        component={Find}
+        options={{ tabBarButton: () => null }}
       />
     </Navigator>
   )
