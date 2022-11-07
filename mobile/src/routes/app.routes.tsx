@@ -52,7 +52,7 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="pools"
+        name="find"
         component={Find}
         options={{ tabBarButton: () => null }}
       />
