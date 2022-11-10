@@ -5,6 +5,7 @@ import { useRoute } from '@react-navigation/native';
 
 import { api } from "../services/api";
 import { Header } from "../components/Header";
+import { Guesses } from "../components/Guesses";
 import { Loading } from "../components/Loading";
 import { Option } from "../components/Option"
 import { PoolCardProps } from '../components/PoolCard';
@@ -84,9 +85,11 @@ export function Details() {
                 isSelected={optionSelected === 'ranking'}
                 onPress={() => setOptionSelected('ranking')}
               />
-
             </HStack>
+
+            <Guesses poolId={poolDetails.id} />
           </VStack>
+
           : <EmptyMyPoolList code={poolDetails.code} />
       }
     </VStack>
